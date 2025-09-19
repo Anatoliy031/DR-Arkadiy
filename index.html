@@ -2,214 +2,162 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
-  />
-  <title>С днем рождения Аркадий Адреевич!</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>С днём рождения, Аркадий Адреевич!</title>
 
-  <!-- Шрифты -->
+  <!-- Шрифты (крутые и читаемые на мобилке) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
+      --ink:#eaf1ff;
+      --muted:#becaf8;
+      --gold:#f6c453;
       --blue:#0033A0;
       --cyan:#00B4F0;
-      --gold:#f6c453;
       --bg1:#0b1020;
       --bg2:#121a33;
-      --glass: rgba(255,255,255,.08);
-      --glass-border: rgba(255,255,255,.25);
-      --text:#e8efff;
-      --muted:#b7c4ff;
+      --glass: rgba(255,255,255,.06);
+      --glass-b: rgba(255,255,255,.22);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
+      color:var(--ink);
+      font-family: Manrope, Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       background:
         radial-gradient(1200px 600px at 10% 10%, #1c2545 0%, transparent 60%),
         radial-gradient(1000px 500px at 90% 0%, #16224a 0%, transparent 65%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
-      color:var(--text);
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      min-height: 100dvh;
-      overflow: hidden;
+      min-height:100dvh;
+      overflow:hidden;
     }
 
-    /* Северное сияние */
-    .aurora, .aurora::before, .aurora::after{
-      position:fixed; inset:-20vmax;
-      pointer-events:none; z-index:0;
-      content:"";
-      filter: blur(60px) saturate(120%);
+    /* АУРОРА / ГЛОУ */
+    .aurora,.aurora::before,.aurora::after{
+      position:fixed; inset:-20vmax; content:""; z-index:0; pointer-events:none;
+      filter: blur(72px) saturate(120%);
       background:
-        radial-gradient(50% 40% at 20% 30%, rgba(0,180,240,.25), transparent 60%),
-        radial-gradient(45% 35% at 80% 20%, rgba(0,120,255,.18), transparent 60%),
-        radial-gradient(35% 30% at 50% 80%, rgba(255,215,128,.15), transparent 60%);
-      animation: drift 18s linear infinite;
+        radial-gradient(45% 35% at 18% 30%, rgba(0,180,240,.25), transparent 60%),
+        radial-gradient(40% 30% at 84% 20%, rgba(0,120,255,.18), transparent 60%),
+        radial-gradient(35% 30% at 52% 82%, rgba(255,215,128,.16), transparent 60%);
+      animation: drift 24s linear infinite;
     }
-    .aurora::before{ animation-duration: 26s; mix-blend-mode:screen; }
-    .aurora::after{ animation-duration: 32s; mix-blend-mode:overlay; }
-
+    .aurora::before{ animation-duration: 32s; mix-blend-mode:screen }
+    .aurora::after{ animation-duration: 40s; mix-blend-mode:overlay }
     @keyframes drift{
-      0%   { transform:translate3d(-3%, -2%, 0) rotate(0deg) scale(1.05); }
-      50%  { transform:translate3d(3%, 2%, 0) rotate(180deg) scale(1.08); }
-      100% { transform:translate3d(-3%, -2%, 0) rotate(360deg) scale(1.05); }
+      0%{transform:translate3d(-2%, -1%, 0) rotate(0deg) scale(1.03)}
+      50%{transform:translate3d(2%, 1%, 0) rotate(180deg) scale(1.06)}
+      100%{transform:translate3d(-2%, -1%, 0) rotate(360deg) scale(1.03)}
     }
 
-    /* Звезды */
+    /* СТАРС */
     .stars{
-      position:fixed; inset:0; z-index:1; pointer-events:none;
+      position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.9;
       background-image:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.9) 50%, transparent 52%),
-        radial-gradient(1.5px 1.5px at 70% 20%, rgba(255,255,255,.7) 50%, transparent 52%),
-        radial-gradient(1.5px 1.5px at 40% 70%, rgba(255,255,255,.8) 50%, transparent 52%),
-        radial-gradient(2px 2px at 85% 65%, rgba(255,255,255,.9) 50%, transparent 52%),
-        radial-gradient(1.5px 1.5px at 10% 80%, rgba(255,255,255,.6) 50%, transparent 52%);
-      animation: twinkle 3.5s ease-in-out infinite alternate;
-      opacity:.7;
+        radial-gradient(1.7px 1.7px at 20% 30%, rgba(255,255,255,.8) 50%, transparent 52%),
+        radial-gradient(1.7px 1.7px at 70% 20%, rgba(255,255,255,.7) 50%, transparent 52%),
+        radial-gradient(1.7px 1.7px at 40% 70%, rgba(255,255,255,.8) 50%, transparent 52%),
+        radial-gradient(1.7px 1.7px at 85% 65%, rgba(255,255,255,.9) 50%, transparent 52%),
+        radial-gradient(1.7px 1.7px at 10% 80%, rgba(255,255,255,.6) 50%, transparent 52%);
+      animation: twinkle 3.6s ease-in-out infinite alternate;
     }
-    @keyframes twinkle{ from{opacity:.35} to{opacity:.9} }
+    @keyframes twinkle{ from{opacity:.35} to{opacity:.95} }
 
-    /* Основной блок */
+    /* КОНФЕТТИ + САЛЮТЫ */
+    canvas#confetti, canvas#fireworks{
+      position:fixed; inset:0; width:100vw; height:100dvh; pointer-events:none;
+    }
+    #confetti{ z-index:1.3 }
+    #fireworks{ z-index:1.35 }
+
+    /* ОБЛОЖКА */
     .wrap{
-      position:relative; z-index:3;
-      min-height: 100dvh;
-      width:100%;
-      display:grid; place-items:center;
-      padding: clamp(12px, 4vmin, 40px);
+      position:relative; z-index:3; min-height:100dvh; width:100%;
+      display:grid; place-items:center; padding:clamp(12px, 4vmin, 44px);
       padding-bottom: calc(16px + env(safe-area-inset-bottom));
     }
     .card{
       width:min(960px, 96vw);
-      padding: clamp(16px, 4vmin, 40px);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      border:1px solid var(--glass-border);
-      border-radius:24px;
+      padding:clamp(18px, 5vmin, 44px);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border:1px solid var(--glass-b);
+      border-radius:26px;
       backdrop-filter: blur(16px);
-      box-shadow: 0 16px 50px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
-      position:relative;
-      overflow:hidden;
+      box-shadow: 0 18px 55px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
+      position:relative; overflow:hidden;
     }
     .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      border-radius:26px;
-      padding:2px;
-      background: linear-gradient(135deg, rgba(246,196,83,.7), rgba(0,180,240,.55), rgba(255,255,255,.2));
+      content:""; position:absolute; inset:-2px; border-radius:28px; padding:2px;
+      background: conic-gradient(from 0deg, #ffd16b, #00b4f0, #ffffff33, #ffd16b);
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       -webkit-mask-composite: xor; mask-composite: exclude;
-      animation: borderGlow 6s linear infinite;
+      animation: borderGlow 7s linear infinite;
     }
-    @keyframes borderGlow{
-      0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)}
-    }
+    @keyframes borderGlow{ to{ filter:hue-rotate(360deg) } }
 
     .badge{
       display:inline-flex; align-items:center; gap:.6rem;
       padding:.5rem .85rem; border-radius:999px;
-      font-weight:800; letter-spacing:.06em;
+      font-weight:800; letter-spacing:.06em; text-transform:uppercase;
       background: linear-gradient(90deg, rgba(246,196,83,.25), rgba(255,255,255,.08));
-      border:1px solid rgba(246,196,83,.6);
-      color:var(--gold);
-      text-transform:uppercase; font-size:.74rem;
-      backdrop-filter: blur(6px);
+      border:1px solid rgba(246,196,83,.6); color:var(--gold);
+      backdrop-filter: blur(6px); font-size:.78rem;
     }
-    .badge svg{ width:18px; height:18px; }
 
     h1{
-      margin:12px 0 6px;
-      font-family: Montserrat, Inter, system-ui, sans-serif;
-      font-weight:900;
-      line-height:1.12;
-      font-size: clamp(26px, 7vw, 48px);
-      letter-spacing:.01em;
-      background: linear-gradient(180deg, #fff, #cfe7ff 50%, #9ad8ff);
+      margin:10px 0 2px;
+      font-family: Montserrat, Manrope, system-ui, sans-serif;
+      font-weight:900; line-height:1.05;
+      font-size: clamp(28px, 8vw, 58px);
+      letter-spacing:.02em;
+      background: linear-gradient(180deg, #fff, #d9ecff 55%, #aee3ff);
       -webkit-background-clip:text; background-clip:text; color:transparent;
       text-shadow: 0 10px 24px rgba(0,0,0,.35);
-      min-height: 2.6em; /* чтобы не прыгал блок при печати */
+      min-height:2.6em; /* не дёргается при печати */
     }
-    .accent{ background: linear-gradient(180deg, #fff, #ffe3a6 55%, #ffd16b); -webkit-background-clip:text; color:transparent; }
 
     .subtitle{
-      margin:0 0 14px; color:var(--muted);
-      font-weight:600; letter-spacing:.02em;
-      font-size: clamp(13px, 3.6vw, 18px);
-      min-height: 1.4em;
+      margin:0 0 12px; color:var(--muted); font-weight:700;
+      font-size: clamp(13px, 3.7vw, 18px);
+      min-height:1.6em;
     }
+
     .msg{
-      font-size: clamp(15px, 3.8vw, 19px);
-      line-height:1.65; color:#eef3ff; margin-top:10px;
-      min-height: 1.65em;
+      font-size: clamp(15px, 3.9vw, 19px);
+      line-height:1.68; color:#eef3ff; margin:10px 0 0;
+      min-height:1.7em;
     }
     .msg b{ color:#fff }
+
+    .cursor::after{
+      content:""; display:inline-block;
+      width:0.6ch; height:1.05em; margin-left:2px;
+      background: linear-gradient(180deg, #ffffff, #a6c8ff);
+      border-radius:2px; animation:blink .9s steps(1) infinite; vertical-align:-0.15em;
+    }
+    @keyframes blink{50%{opacity:0}}
 
     .footer{
       display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
       margin-top:18px; color:#d3ddff; font-size:.95rem;
       border-top:1px dashed rgba(255,255,255,.25); padding-top:14px;
-      min-height: 2.2em;
+      min-height:2.2em;
     }
-    .team{ font-weight:700; color:#fff }
-    .date{ opacity:.9 }
+    .team{font-weight:800;color:#fff}
 
-    /* Эффекты текста */
-    .cursor::after{
-      content:"";
-      display:inline-block;
-      width:0.7ch; height:1.05em;
-      margin-left:2px;
-      background: linear-gradient(180deg, #ffffff, #a6c8ff);
-      border-radius:2px;
-      animation: blink .9s steps(1) infinite;
-      vertical-align:-0.15em;
+    @media (max-width:480px){
+      .card{border-radius:22px;padding:18px}
+      .badge{font-size:.72rem}
     }
-    @keyframes blink { 50%{ opacity:0 } }
-
-    .strike{
-      position:relative;
-      display:inline-block;
-      color:#ffdddd;
-      filter: saturate(110%);
-      transform-origin:left center;
-      animation: oops .25s ease;
-    }
-    .strike::after{
-      content:"";
-      position:absolute; left:-2%; right:-2%; top:52%;
-      height:2px; background: linear-gradient(90deg, transparent, #fff, transparent);
-      box-shadow: 0 0 6px rgba(255,255,255,.65);
-      animation: dash .5s ease;
-    }
-    @keyframes dash{ from{ transform:scaleX(0) } to{ transform:scaleX(1) } }
-    @keyframes oops{
-      0%{ transform: rotate(0deg) }
-      33%{ transform: rotate(-4deg) }
-      66%{ transform: rotate(3deg) }
-      100%{ transform: rotate(0deg) }
-    }
-
-    /* Канвасы эффектов */
-    canvas#confetti, canvas#fireworks{
-      position:fixed; inset:0; pointer-events:none;
-      width:100vw; height:100dvh;
-    }
-    canvas#confetti{ z-index:1.2 }
-    canvas#fireworks{ z-index:1.4 }
-
-    /* Подпорки для мобильных */
-    @media (max-width: 480px){
-      .card{ border-radius:20px; padding: 16px }
-      .badge{ font-size:.7rem; padding:.45rem .75rem }
-      .footer{ font-size:.9rem }
-    }
-
     @media (prefers-reduced-motion: reduce){
-      .aurora, .aurora::before, .aurora::after{ animation: none }
-      .stars{ animation: none }
+      .aurora,.aurora::before,.aurora::after{animation:none}
+      .stars{animation:none}
     }
   </style>
 </head>
@@ -217,31 +165,31 @@
   <div class="aurora" aria-hidden="true"></div>
   <div class="stars" aria-hidden="true"></div>
 
-  <!-- Эффекты фона: конфетти и салюты (без кнопок, сразу работают) -->
+  <!-- Фоны (сразу работают): конфетти + салюты -->
   <canvas id="confetti" aria-hidden="true"></canvas>
   <canvas id="fireworks" aria-hidden="true"></canvas>
 
   <div class="wrap">
     <section class="card" aria-label="Праздничное поздравление">
-      <div class="badge" title="ДРНУ поздравляет">Коллектив ДРНУ</div>
+      <div class="badge">Коллектив ДРНУ</div>
 
-      <h1 id="typed-h1" class="cursor"></h1>
-      <p id="typed-sub" class="subtitle cursor"></p>
+      <h1 id="h1" class="cursor"></h1>
+      <p id="sub" class="subtitle cursor"></p>
 
-      <p id="t1" class="msg cursor"></p>
-      <p id="t2" class="msg cursor"></p>
-      <p id="t3" class="msg cursor"></p>
-      <p id="t4" class="msg cursor"></p>
+      <p id="m1" class="msg cursor"></p>
+      <p id="m2" class="msg cursor"></p>
+      <p id="m3" class="msg cursor"></p>
+      <p id="m4" class="msg cursor"></p>
 
       <div class="footer">
         <div class="team">С уважением, команда ДРНУ</div>
-        <div class="date" id="date"></div>
+        <div id="date"></div>
       </div>
     </section>
   </div>
 
   <script>
-    // ========= Дата =========
+    // ======= Дата =======
     (function(){
       const today = new Date();
       document.getElementById('date').textContent = today.toLocaleDateString('ru-RU', {
@@ -249,88 +197,114 @@
       });
     })();
 
-    // ========= TYPEWRITER (с «приколом» со зачёркиванием) =========
+    // ======= УТИЛЫ ПЕЧАТИ =======
     const sleep = (ms)=> new Promise(r=>setTimeout(r, ms));
-    function el(sel){ return (typeof sel === 'string') ? document.querySelector(sel) : sel }
+    function el(q){ return document.querySelector(q) }
 
-    async function typeTo(target, text, {speed=28, bold=false, accent=false, id=null}={}){
-      target = el(target);
-      // создать оболочку, чтобы можно было задавать стили на сегмент
-      const span = document.createElement(bold ? 'b' : 'span');
-      if(accent) span.classList.add('accent');
-      if(id) span.id = id;
-      target.appendChild(span);
-
+    async function typeText(node, text, speed=26, jitter=20){
       for(let i=0;i<text.length;i++){
-        span.textContent += text[i];
-        await sleep(speed + Math.random()*25);
+        node.textContent += text[i];
+        await sleep(speed + Math.random()*jitter);
       }
-      return span;
     }
-
-    async function strike(sel){
-      const node = el(sel);
-      if(!node) return;
-      node.classList.add('strike');
-      await sleep(500);
+    async function backspace(node, n, speed=16){
+      const t = ()=> new Promise(res=>{
+        requestAnimationFrame(()=>{
+          node.textContent = node.textContent.slice(0,-1);
+          res();
+        });
+      });
+      for(let i=0;i<n;i++){ await t(); await sleep(speed) }
     }
-
     function stopCursor(node){ node.classList.remove('cursor') }
 
-    // Сценарий печати
-    (async function script(){
-      const h1 = el('#typed-h1');
-      const sub= el('#typed-sub');
+    // Печать с комическим заменителем слова (типнул — стёр — заменил)
+    async function typeWithCorrections(node, before, variants, after, opts={}){
+      const {speed=26} = opts;
+      await typeText(node, before, speed);
+      const wordSpan = document.createElement('span');
+      node.appendChild(wordSpan);
+      for(let i=0;i<variants.length;i++){
+        const w = variants[i];
+        // напечатать слово
+        await typeText(wordSpan, w, speed+4);
+        await sleep(600);
+        // стереть слово
+        await backspace(wordSpan, w.length, 12);
+        await sleep(140);
+      }
+      // финальное (правильное) слово — последнее в variants
+      const finalWord = variants[variants.length-1];
+      await typeText(wordSpan, finalWord, speed);
+      await typeText(node, after, speed);
+    }
 
-      await typeTo(h1, 'С днем рождения ', {speed:32});
-      await typeTo(h1, 'Аркадий Адреевич!', {speed:36, accent:true});
-      stopCursor(h1); sub.classList.add('cursor'); await sleep(300);
+    // ======= СЦЕНАРИЙ =======
+    (async function(){
+      const h1 = el('#h1');
+      const sub = el('#sub');
+      const m1 = el('#m1');
+      const m2 = el('#m2');
+      const m3 = el('#m3');
+      const m4 = el('#m4');
 
-      await typeTo(sub, 'Лучший работник и надежный начальник отдела', {speed:24});
-      stopCursor(sub); await sleep(200);
+      // Заголовок
+      await typeText(h1, 'С днём рождения, ', 30);
+      await typeText(h1, 'Аркадий Адреевич!', 34);
+      stopCursor(h1); sub.classList.add('cursor'); await sleep(250);
 
-      const t1 = el('#t1'); t1.classList.add('cursor');
-      await typeTo(t1, 'От всего ', {speed:24});
-      await typeTo(t1, 'коллектива ДРНУ', {speed:26, bold:true});
-      await typeTo(t1, ' — самые тёплые поздравления!', {speed:24});
-      stopCursor(t1); await sleep(240);
+      // Подзаголовок
+      await typeText(sub, 'Лучший работник и надёжный начальник отдела', 24);
+      stopCursor(sub); await sleep(220);
 
-      const t2 = el('#t2'); t2.classList.add('cursor');
-      await typeTo(t2, 'Ты настолько ответственен, что мы иногда забываем тебя ', {speed:23});
-      const gag = await typeTo(t2, 'контролировать', {speed:30, id:'gag'});
-      await strike(gag);
-      await typeTo(t2, ' доверять.', {speed:28});
-      stopCursor(t2); await sleep(260);
+      // Блок 1
+      await typeText(m1, 'От всего коллектива ДРНУ — самые тёплые поздравления!', 24);
+      stopCursor(m1); await sleep(240);
 
-      const t3 = el('#t3'); t3.classList.add('cursor');
-      await typeTo(t3, 'Мы видим, какой мощный вклад своим профессионализмом ты вносишь в общий результат.', {speed:22});
-      stopCursor(t3); await sleep(240);
+      // Блок 2 (комедийная замена слова)
+      m2.textContent = '';
+      await typeWithCorrections(
+        m2,
+        'Ты настолько ответственен, что мы иногда забываем тебя ',
+        ['контролировать', 'надзирать', 'проверять', 'напоминать', 'просто хвалить'],
+        '.',
+        {speed:23}
+      );
+      stopCursor(m2); await sleep(260);
 
-      const t4 = el('#t4'); t4.classList.add('cursor');
-      await typeTo(t4, 'Здоровья тебе, семье благополучия, всего самого наилучшего!', {speed:24});
-      stopCursor(t4);
+      // Блок 3 (ещё одна замена в середине)
+      m3.textContent = '';
+      await typeText(m3, 'Мы видим твой вклад и профессионализм — благодаря тебе задачи становятся ', 23);
+      const tWord = document.createElement('span'); m3.appendChild(tWord);
+      await typeText(tWord, 'сложнее', 25); await sleep(450);
+      await backspace(tWord, 'сложнее'.length, 14); await sleep(120);
+      await typeText(tWord, 'легче', 25);
+      await typeText(m3, ', сроки — реальнее, а результат — впечатляющим!', 23);
+      stopCursor(m3); await sleep(260);
+
+      // Блок 4
+      await typeText(m4, 'Желаем крепкого здоровья, семье — благополучия, а тебе — ярких побед и только лучших новостей каждый день!', 23);
+      stopCursor(m4);
     })();
 
-    // ========= КОНФЕТТИ =========
+    // ======= КОНФЕТТИ =======
     (function(){
       const c = document.getElementById('confetti');
       const ctx = c.getContext('2d');
       let W,H,DPR;
-      const isPhone = ()=> innerWidth <= 480;
+      const isPhone = ()=> innerWidth<=480;
       function size(){
         DPR = isPhone()? Math.min(1.25, devicePixelRatio||1) : Math.min(2, devicePixelRatio||1);
-        W = c.width  = Math.floor(innerWidth * DPR);
-        H = c.height = Math.floor(innerHeight * DPR);
-        c.style.width  = innerWidth + 'px';
-        c.style.height = innerHeight + 'px';
+        W = c.width = Math.floor(innerWidth*DPR);
+        H = c.height = Math.floor(innerHeight*DPR);
+        c.style.width = innerWidth+'px';
+        c.style.height = innerHeight+'px';
       }
       addEventListener('resize', size, {passive:true}); size();
 
       const pieces = [];
-      const count = isPhone()? 80 : 140;
-      const colors = [
-        '#ffffff','#ffd166','#06d6a0','#118ab2','#ef476f','#a0e9ff','#ffe29a'
-      ];
+      const count = isPhone()? 90 : 160;
+      const colors = ['#ffffff','#ffd166','#06d6a0','#118ab2','#ef476f','#a0e9ff','#ffe29a','#c3f584'];
 
       function spawn(i){
         const w = (Math.random()*6 + 4)*DPR;
@@ -339,187 +313,144 @@
           x: Math.random()*W, y: -Math.random()*H,
           w, h,
           r: Math.random()*Math.PI,
-          rv: (Math.random()*0.1 + 0.02) * (Math.random()<.5? -1:1),
-          vy: (Math.random()*1.4 + 1.2) * DPR,
-          vx: (Math.random()*0.6 - 0.3) * DPR,
+          rv: (Math.random()*0.12 + 0.02) * (Math.random()<.5?-1:1),
+          vy: (Math.random()*1.6 + 1.3)*DPR,
+          vx: (Math.random()*0.7 - 0.35)*DPR,
           color: colors[(Math.random()*colors.length)|0],
           flip: Math.random()*Math.PI
         };
       }
       for(let i=0;i<count;i++) spawn(i);
 
-      function step(){
+      (function step(){
         ctx.clearRect(0,0,W,H);
         for(let i=0;i<pieces.length;i++){
           const p = pieces[i];
-          p.y += p.vy;
-          p.x += p.vx;
-          p.r += p.rv;
-          p.flip += 0.08;
-
-          // мигаем шириной (эффект переворота)
+          p.y += p.vy; p.x += p.vx; p.r += p.rv; p.flip += 0.09;
           const scaleY = (Math.sin(p.flip)+1.2)/2.2;
-
-          ctx.save();
-          ctx.translate(p.x, p.y);
-          ctx.rotate(p.r);
-          ctx.fillStyle = p.color;
-          ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h*scaleY);
+          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r);
+          ctx.fillStyle = p.color; ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h*scaleY);
           ctx.restore();
-
-          if(p.y > H + 40*DPR || p.x < -40*DPR || p.x > W + 40*DPR){
-            spawn(i);
-            p.y = -20*DPR;
-          }
+          if(p.y>H+40*DPR || p.x<-40*DPR || p.x>W+40*DPR){ spawn(i); p.y = -20*DPR; }
         }
         requestAnimationFrame(step);
-      }
-      step();
+      })();
     })();
 
-    // ========= САЛЮТЫ =========
+    // ======= САЛЮТЫ (надёжный автозапуск) =======
     (function(){
       const canvas = document.getElementById('fireworks');
-      const ctx = canvas.getContext('2d', { alpha:true });
-      let W, H;
-      const isPhone = () => innerWidth <= 480;
-
-      function DPR(){ return isPhone()? Math.min(1.25, devicePixelRatio||1) : Math.min(2, devicePixelRatio||1) }
+      const ctx = canvas.getContext('2d', {alpha:true});
+      let W,H;
+      const isPhone = ()=> innerWidth<=480;
+      const DPR = ()=> isPhone()? Math.min(1.25, devicePixelRatio||1) : Math.min(2, devicePixelRatio||1);
       let dpr = DPR();
 
       function size(){
         dpr = DPR();
-        W = canvas.width  = Math.floor(innerWidth * dpr);
-        H = canvas.height = Math.floor(innerHeight * dpr);
-        canvas.style.width  = innerWidth + 'px';
-        canvas.style.height = innerHeight + 'px';
+        W = canvas.width = Math.floor(innerWidth*dpr);
+        H = canvas.height = Math.floor(innerHeight*dpr);
+        canvas.style.width = innerWidth+'px';
+        canvas.style.height = innerHeight+'px';
       }
-      addEventListener('resize', size, { passive:true }); size();
+      addEventListener('resize', size, {passive:true}); size();
 
-      const rand = (min, max) => Math.random() * (max - min) + min;
-      const TAU = Math.PI * 2;
-
-      const gravity = (isPhone()? 0.035 : 0.04) * dpr;
+      const rand = (a,b)=> Math.random()*(b-a)+a;
+      const TAU = Math.PI*2;
+      const gravity = (isPhone()?0.035:0.042)*dpr;
       const friction = 0.985;
       const rockets = [];
       const particles = [];
 
-      function colorHSL(h,s,l){ return `hsl(${h} ${s}% ${l}%)`; }
+      function colorHSL(h,s,l){ return `hsl(${h} ${s}% ${l}%)` }
 
-      function spawnRocket(x = rand(W*0.2, W*0.8), y=H, targetY=rand(H*0.28, H*0.5)){
+      function spawnRocket(x=rand(W*0.2,W*0.8), y=H, targetY=rand(H*0.28,H*0.5)){
         rockets.push({
-          x, y, vx: rand(-0.8,0.8)*dpr, vy: rand(-9,-12)*dpr,
-          targetY, colorHue: rand(180, 360), trail:[]
+          x, y, vx: rand(-0.85,0.85)*dpr, vy: rand(-10.5,-13)*dpr,
+          targetY, hue: rand(180,360), trail:[]
         });
       }
-
-      function explode(x, y, baseHue){
-        const baseCount = isPhone() ? rand(46, 72) : rand(80, 120);
-        const count = Math.floor(baseCount);
-        const shape = Math.random()<0.2 ? 'ring' : 'burst';
-        for(let i=0; i<count; i++){
-          const angle = (i/count)*TAU + rand(-0.02,0.02);
-          const speed = (shape==='ring' ? 3.0 : rand(1.4, 4.1)) * dpr;
+      function explode(x,y,hue){
+        const n = Math.floor(isPhone()? rand(55,85): rand(90,130));
+        const shape = Math.random()<0.2?'ring':'burst';
+        for(let i=0;i<n;i++){
+          const ang = (i/n)*TAU + rand(-0.02,0.02);
+          const spd = (shape==='ring'?3.1:rand(1.6,4.6))*dpr;
           particles.push({
-            x, y,
-            vx: Math.cos(angle)*speed,
-            vy: Math.sin(angle)*speed,
-            life: rand(50, 90),
-            alpha: 1,
-            color: colorHSL((baseHue + rand(-12,12))|0, 100, rand(55, 70)),
-            size: rand(1, 2.0) * dpr,
-            sparkle: Math.random() < 0.18
+            x,y, vx:Math.cos(ang)*spd, vy:Math.sin(ang)*spd,
+            life: rand(55,95), alpha:1,
+            color: colorHSL((hue+rand(-12,12))|0, 100, rand(55,70)),
+            size: rand(1,2.1)*dpr, sparkle: Math.random()<0.18
           });
         }
-        const crown = isPhone()? 16 : 24;
+        // золотая корона
+        const crown = isPhone()?18:26;
         for(let i=0;i<crown;i++){
           const a = i/crown*TAU;
           particles.push({
-            x, y,
-            vx: Math.cos(a)*rand(1.1,2.0)*dpr,
-            vy: Math.sin(a)*rand(1.1,2.0)*dpr,
-            life: rand(40,65), alpha:1,
-            color: 'rgba(246,196,83,1)', size: 1.6*dpr, sparkle:true
+            x,y, vx:Math.cos(a)*rand(1.2,2.2)*dpr, vy:Math.sin(a)*rand(1.2,2.2)*dpr,
+            life: rand(42,68), alpha:1, color:'rgba(246,196,83,1)', size:1.7*dpr, sparkle:true
           });
         }
       }
 
-      function step(){
+      (function step(){
         ctx.clearRect(0,0,W,H);
 
         // Ракеты
         for(let i=rockets.length-1;i>=0;i--){
           const r = rockets[i];
-          r.trail.push({x:r.x, y:r.y});
-          if(r.trail.length>5) r.trail.shift();
+          r.trail.push({x:r.x,y:r.y}); if(r.trail.length>6) r.trail.shift();
+          r.x += r.vx; r.y += r.vy; r.vy += gravity*0.5;
 
-          r.x += r.vx;
-          r.y += r.vy;
-          r.vy += gravity * 0.5;
-
-          // след
           ctx.beginPath();
-          for(let t=0; t<r.trail.length-1; t++){
+          for(let t=0;t<r.trail.length-1;t++){
             const a = t/(r.trail.length-1);
-            ctx.strokeStyle = `hsla(${r.colorHue},100%,70%,${a*0.6})`;
-            ctx.lineWidth = (1.3 + a*1.8)*dpr;
+            ctx.strokeStyle = `hsla(${r.hue},100%,70%,${a*0.65})`;
+            ctx.lineWidth = (1.3+a*1.9)*dpr;
             ctx.moveTo(r.trail[t].x, r.trail[t].y);
             ctx.lineTo(r.trail[t+1].x, r.trail[t+1].y);
           }
           ctx.stroke();
 
-          // голова
-          ctx.fillStyle = colorHSL(r.colorHue, 100, 70);
-          ctx.beginPath();
-          ctx.arc(r.x, r.y, 2.0*dpr, 0, TAU);
-          ctx.fill();
+          ctx.fillStyle = colorHSL(r.hue,100,70);
+          ctx.beginPath(); ctx.arc(r.x,r.y,2.1*dpr,0,TAU); ctx.fill();
 
-          if(r.vy >= 0 || r.y <= r.targetY || Math.random()<0.008){
-            explode(r.x, r.y, r.colorHue);
-            rockets.splice(i,1);
+          if(r.vy>=0 || r.y<=r.targetY || Math.random()<0.008){
+            explode(r.x,r.y,r.hue); rockets.splice(i,1);
           }
         }
 
         // Частицы
-        const maxParticles = isPhone() ? 450 : 900;
-        if(particles.length > maxParticles){
-          particles.splice(0, particles.length - maxParticles);
-        }
+        const limit = isPhone()? 520: 980;
+        if(particles.length>limit) particles.splice(0, particles.length-limit);
 
         for(let i=particles.length-1;i>=0;i--){
           const p = particles[i];
-          p.vx *= friction;
-          p.vy = p.vy * friction + gravity;
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life--;
-          p.alpha = Math.max(0, p.life/100);
+          p.vx *= friction; p.vy = p.vy*friction + gravity;
+          p.x += p.vx; p.y += p.vy;
+          p.life--; p.alpha = Math.max(0, p.life/100);
 
-          if(p.sparkle && Math.random() < 0.14){
-            ctx.fillStyle = 'rgba(255,255,255,.85)';
-            ctx.fillRect(p.x, p.y, 1.2*dpr, 1.2*dpr);
+          if(p.sparkle && Math.random()<0.16){
+            ctx.fillStyle = 'rgba(255,255,255,.9)';
+            ctx.fillRect(p.x,p.y,1.2*dpr,1.2*dpr);
           }
 
           ctx.globalAlpha = p.alpha;
           ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, TAU);
-          ctx.fill();
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,TAU); ctx.fill();
           ctx.globalAlpha = 1;
 
-          if(p.alpha<=0 || p.x< -50 || p.x> W+50 || p.y>H+50) particles.splice(i,1);
+          if(p.alpha<=0 || p.x<-50 || p.x>W+50 || p.y>H+50) particles.splice(i,1);
         }
 
-        // Автозапуск
-        if(Math.random() < (isPhone()? 0.035 : 0.06)) spawnRocket();
+        // Автозапуск салютов
+        if(Math.random() < (isPhone()? 0.05 : 0.085)) spawnRocket();
         requestAnimationFrame(step);
-      }
+      })();
 
       // стартовый букет
-      for(let i=0;i<(isPhone()?2:4);i++){
-        setTimeout(()=> spawnRocket(), i*220);
-      }
-      step();
+      for(let i=0;i<(isPhone()?3:5);i++) setTimeout(()=>spawnRocket(), i*240);
     })();
   </script>
 </body>
