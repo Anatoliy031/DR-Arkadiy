@@ -1,1 +1,474 @@
-www
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+  />
+  <title>Поздравление от коллектива ДРНУ</title>
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue:#0033A0;
+      --cyan:#00B4F0;
+      --gold:#f6c453;
+      --bg1:#0b1020;
+      --bg2:#121a33;
+      --glass: rgba(255,255,255,.08);
+      --glass-border: rgba(255,255,255,.25);
+      --text:#e8efff;
+      --muted:#b7c4ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, #1c2545 0%, transparent 60%),
+        radial-gradient(1000px 500px at 90% 0%, #16224a 0%, transparent 65%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      color:var(--text);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ: используем 100dvh для правильной высоты на iOS */
+      min-height: 100dvh;
+      overflow: hidden;
+    }
+
+    /* Анимация «северного сияния» */
+    .aurora, .aurora::before, .aurora::after{
+      position:fixed; inset:-20vmax;
+      pointer-events:none; z-index:0;
+      content:"";
+      filter: blur(60px) saturate(120%);
+      background:
+        radial-gradient(50% 40% at 20% 30%, rgba(0,180,240,.25), transparent 60%),
+        radial-gradient(45% 35% at 80% 20%, rgba(0,120,255,.18), transparent 60%),
+        radial-gradient(35% 30% at 50% 80%, rgba(255,215,128,.15), transparent 60%);
+      animation: drift 18s linear infinite;
+    }
+    .aurora::before{ animation-duration: 26s; mix-blend-mode:screen; }
+    .aurora::after{ animation-duration: 32s; mix-blend-mode:overlay; }
+
+    @keyframes drift{
+      0%   { transform:translate3d(-3%, -2%, 0) rotate(0deg) scale(1.05); }
+      50%  { transform:translate3d(3%, 2%, 0) rotate(180deg) scale(1.08); }
+      100% { transform:translate3d(-3%, -2%, 0) rotate(360deg) scale(1.05); }
+    }
+
+    /* Мерцающие «звёзды» */
+    .stars{
+      position:fixed; inset:0; z-index:1; pointer-events:none;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.9) 50%, transparent 52%),
+        radial-gradient(1.5px 1.5px at 70% 20%, rgba(255,255,255,.7) 50%, transparent 52%),
+        radial-gradient(1.5px 1.5px at 40% 70%, rgba(255,255,255,.8) 50%, transparent 52%),
+        radial-gradient(2px 2px at 85% 65%, rgba(255,255,255,.9) 50%, transparent 52%),
+        radial-gradient(1.5px 1.5px at 10% 80%, rgba(255,255,255,.6) 50%, transparent 52%);
+      animation: twinkle 3.5s ease-in-out infinite alternate;
+      opacity:.7;
+    }
+    @keyframes twinkle{ from{opacity:.35} to{opacity:.9} }
+
+    /* Основной блок-поздравление */
+    .wrap{
+      position:relative; z-index:2;
+      min-height: 100dvh; /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
+      width:100%;
+      display:grid; place-items:center;
+      padding: clamp(12px, 4vmin, 40px);
+      padding-bottom: calc(16px + env(safe-area-inset-bottom)); /* вырезы iPhone */
+    }
+    .card{
+      width:min(960px, 96vw);
+      max-width: 960px;
+      padding: clamp(16px, 4vmin, 40px);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid var(--glass-border);
+      border-radius:24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 50px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:26px;
+      padding:2px;
+      background: linear-gradient(135deg, rgba(246,196,83,.7), rgba(0,180,240,.55), rgba(255,255,255,.2));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: borderGlow 6s linear infinite;
+    }
+    @keyframes borderGlow{
+      0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)}
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding:.56rem .9rem; border-radius:999px;
+      font-weight:700; letter-spacing:.02em;
+      background: linear-gradient(90deg, rgba(246,196,83,.25), rgba(255,255,255,.08));
+      border:1px solid rgba(246,196,83,.6);
+      color:var(--gold);
+      text-transform:uppercase; font-size:.82rem;
+      backdrop-filter: blur(6px);
+    }
+    .badge svg{ width:18px; height:18px; }
+
+    h1{
+      margin:12px 0 6px;
+      font-family: Montserrat, Inter, system-ui, sans-serif;
+      font-weight:900;
+      line-height:1.12;
+      font-size: clamp(24px, 7vw, 48px); /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
+      letter-spacing:.01em;
+      background: linear-gradient(180deg, #fff, #cfe7ff 50%, #9ad8ff);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+    .subtitle{
+      margin:0 0 14px; color:var(--muted);
+      font-weight:600; letter-spacing:.02em;
+      font-size: clamp(13px, 3.6vw, 18px); /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
+    }
+    .msg{
+      font-size: clamp(15px, 3.8vw, 19px); /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
+      line-height:1.65; color:#eef3ff; margin-top:10px;
+    }
+    .msg b{ color:#fff }
+
+    .footer{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin-top:18px; color:#d3ddff; font-size:.95rem;
+      border-top:1px dashed rgba(255,255,255,.25); padding-top:14px;
+    }
+    .team{ font-weight:700; color:#fff }
+    .date{ opacity:.9 }
+
+    .controls{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;
+    }
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      padding:.9rem 1rem; border-radius:14px;
+      font-weight:800; letter-spacing:.02em;
+      color:#0b1020; background: linear-gradient(180deg, #fff, #dce9ff);
+      box-shadow: 0 10px 24px rgba(0,0,0,.2);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0,0,0,.28) }
+    .btn.secondary{
+      background: linear-gradient(180deg, #ffe6a6, #f6c453);
+      color:#3b2a00;
+    }
+
+    /* Холст фейерверков */
+    canvas#fx{
+      position:fixed; inset:0; z-index:1; pointer-events:none;
+      width:100vw; height:100dvh; /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
+    }
+
+    /* Подсказка */
+    .hint{
+      position:fixed; left:50%; bottom:12px; transform:translateX(-50%);
+      z-index:3; font-size:12px; color:#e8efff; opacity:.75;
+      padding:6px 10px; border-radius:999px;
+      background: rgba(0,0,0,.25); backdrop-filter: blur(4px);
+      padding-bottom: calc(6px + env(safe-area-inset-bottom)); /* безопасная зона */
+    }
+
+    /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ: компактнее, крупные кнопки, меньше нагрузки эффектов */
+    @media (max-width: 480px){
+      .aurora, .aurora::before, .aurora::after{ filter: blur(40px) saturate(110%); }
+      .card{ border-radius:20px; padding: 16px }
+      .badge{ font-size:.74rem; padding:.5rem .8rem }
+      .controls{ gap:8px }
+      .btn{ padding:.84rem 1rem; flex:1 1 100%; width:100% } /* полноразмерные кнопки */
+      .footer{ font-size:.9rem; gap:8px }
+    }
+
+    /* Если пользователь просит меньше движения — отключаем анимации */
+    @media (prefers-reduced-motion: reduce){
+      .aurora, .aurora::before, .aurora::after{ animation: none }
+      .stars{ animation: none }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="stars" aria-hidden="true"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <div class="wrap">
+    <section class="card" aria-label="Праздничное поздравление">
+      <div class="badge" title="Лучший работник">
+        <!-- Кубок -->
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 4h12v2a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V4Z" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M18 6h3a3 3 0 0 1-3 3M6 6H3a3 3 0 0 0 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M9 10v2a3 3 0 0 0 3 3v0a3 3 0 0 0 3-3v-2M8 19h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        Лучший работник — профессионал
+      </div>
+
+      <h1>
+        <span id="hello">Уважаемый(ая)</span> <span id="name">Коллега</span>!
+      </h1>
+      <p class="subtitle">Начальник отдела. Ответственный настолько, что мы иногда забываем тебя контролировать 😊</p>
+
+      <p class="msg">
+        От всего <b>коллектива ДРНУ</b> — искренние поздравления!
+        Мы видим, какой мощный вклад <b>своим профессионализмом</b> ты вносишь в общий результат.
+        Спасибо за надёжность, инициативность и лидерство, которое вдохновляет.
+      </p>
+      <p class="msg">
+        Желаем крепкого <b>здоровья</b>, семье — <b>благополучия</b>, а тебе — новых побед, интересных задач и
+        только лучших результатов. Пусть всё получается легко, а цели становятся яркими достижениями!
+      </p>
+
+      <div class="controls" aria-label="Кнопки управления">
+        <button class="btn secondary" id="burst">Салют! 🎆</button>
+        <button class="btn" id="toggle">Выключить фейерверки</button>
+        <button class="btn" id="share">Скопировать ссылку-поздравление</button>
+      </div>
+
+      <div class="footer">
+        <div class="team">С уважением, коллектив ДРНУ</div>
+        <div class="date" id="date"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="hint" id="hint">Тап по экрану запускает салют ✨</div>
+
+  <script>
+    // ===== Персонализация по URL: ?name=Имя =====
+    (function personalize(){
+      const params = new URLSearchParams(location.search);
+      const name = (params.get('name') || "").trim();
+      if(name){
+        document.getElementById('name').textContent = name;
+        document.title = `Поздравление для ${name} — от коллектива ДРНУ`;
+      }
+      const today = new Date();
+      document.getElementById('date').textContent = today.toLocaleDateString('ru-RU', {
+        year:'numeric', month:'long', day:'numeric'
+      });
+    })();
+
+    // ===== Кнопки =====
+    const btnBurst  = document.getElementById('burst');
+    const btnToggle = document.getElementById('toggle');
+    const btnShare  = document.getElementById('share');
+
+    btnShare.addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText(location.href);
+        btnShare.textContent = 'Ссылка скопирована ✅';
+        setTimeout(()=> btnShare.textContent = 'Скопировать ссылку-поздравление', 2200);
+      }catch(e){
+        alert('Скопируйте вручную: ' + location.href);
+      }
+    });
+
+    // ===== Фейерверки (canvas), с оптимизацией под мобильный =====
+    const canvas = document.getElementById('fx');
+    const ctx = canvas.getContext('2d', { alpha:true });
+    let W, H;
+    const isPhone = () => innerWidth <= 480;
+
+    // МОБИЛЬНАЯ ОПТИМИЗАЦИЯ: ограничиваем DPR на мобильных
+    function getDPR(){
+      const dpr = window.devicePixelRatio || 1;
+      return isPhone() ? Math.min(1.25, dpr) : Math.min(2, dpr);
+    }
+    let DPR = getDPR();
+
+    function sizeCanvas(){
+      DPR = getDPR();
+      W = canvas.width  = Math.floor(innerWidth * DPR);
+      H = canvas.height = Math.floor(window.innerHeight * DPR);
+      canvas.style.width  = innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+    }
+    window.addEventListener('resize', sizeCanvas, { passive:true });
+    sizeCanvas();
+
+    const rand = (min, max) => Math.random() * (max - min) + min;
+    const TAU = Math.PI * 2;
+
+    // МОБИЛЬНАЯ ОПТИМИЗАЦИЯ: меньше частиц и реже залпы
+    const gravity = (isPhone()? 0.035 : 0.04) * DPR;
+    const friction = 0.985;
+    const rockets = [];
+    const particles = [];
+    let running = true;
+
+    function colorHSL(h,s,l){ return `hsl(${h} ${s}% ${l}%)`; }
+
+    function spawnRocket(x = rand(W*0.2, W*0.8), y=H, targetY=rand(H*0.28, H*0.5)){
+      rockets.push({
+        x, y, vx: rand(-0.8,0.8)*DPR, vy: rand(-9,-12)*DPR,
+        targetY, colorHue: rand(180, 360), trail:[]
+      });
+    }
+
+    function explode(x, y, baseHue){
+      const baseCount = isPhone() ? rand(46, 72) : rand(80, 120);
+      const count = Math.floor(baseCount);
+      const shape = Math.random()<0.2 ? 'ring' : 'burst';
+      for(let i=0; i<count; i++){
+        const angle = (i/count)*TAU + rand(-0.02,0.02);
+        const speed = (shape==='ring' ? 3.0 : rand(1.4, 4.1)) * DPR;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle)*speed,
+          vy: Math.sin(angle)*speed,
+          life: rand(50, 90),
+          alpha: 1,
+          color: colorHSL((baseHue + rand(-12,12))|0, 100, rand(55, 70)),
+          size: rand(1, 2.0) * DPR,
+          sparkle: Math.random() < 0.18
+        });
+      }
+      // золотой коронный блик (чуть меньше на мобильных)
+      const crown = isPhone()? 16 : 24;
+      for(let i=0;i<crown;i++){
+        const a = i/crown*TAU;
+        particles.push({
+          x, y,
+          vx: Math.cos(a)*rand(1.1,2.0)*DPR,
+          vy: Math.sin(a)*rand(1.1,2.0)*DPR,
+          life: rand(40,65), alpha:1,
+          color: 'rgba(246,196,83,1)', size: 1.6*DPR, sparkle:true
+        });
+      }
+    }
+
+    function step(){
+      ctx.clearRect(0,0,W,H);
+
+      // Ракеты
+      for(let i=rockets.length-1;i>=0;i--){
+        const r = rockets[i];
+        r.trail.push({x:r.x, y:r.y});
+        if(r.trail.length>5) r.trail.shift();
+
+        r.x += r.vx;
+        r.y += r.vy;
+        r.vy += gravity * 0.5;
+
+        // След ракеты
+        ctx.beginPath();
+        for(let t=0; t<r.trail.length-1; t++){
+          const a = t/(r.trail.length-1);
+          ctx.strokeStyle = `hsla(${r.colorHue},100%,70%,${a*0.6})`;
+          ctx.lineWidth = (1.3 + a*1.8)*DPR;
+          ctx.moveTo(r.trail[t].x, r.trail[t].y);
+          ctx.lineTo(r.trail[t+1].x, r.trail[t+1].y);
+        }
+        ctx.stroke();
+
+        // Голова
+        ctx.fillStyle = colorHSL(r.colorHue, 100, 70);
+        ctx.beginPath();
+        ctx.arc(r.x, r.y, 2.0*DPR, 0, TAU);
+        ctx.fill();
+
+        if(r.vy >= 0 || r.y <= r.targetY || Math.random()<0.008){
+          explode(r.x, r.y, r.colorHue);
+          rockets.splice(i,1);
+        }
+      }
+
+      // Частицы
+      const maxParticles = isPhone() ? 450 : 900; // ограничение для мобильных
+      if(particles.length > maxParticles){
+        particles.splice(0, particles.length - maxParticles);
+      }
+
+      for(let i=particles.length-1;i>=0;i--){
+        const p = particles[i];
+        p.vx *= friction;
+        p.vy = p.vy * friction + gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life--;
+        p.alpha = Math.max(0, p.life/100);
+
+        // искры
+        if(p.sparkle && Math.random() < 0.14){
+          ctx.fillStyle = 'rgba(255,255,255,.8)';
+          ctx.fillRect(p.x, p.y, 1.2*DPR, 1.2*DPR);
+        }
+
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, TAU);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if(p.alpha<=0 || p.x< -50 || p.x> W+50 || p.y>H+50) particles.splice(i,1);
+      }
+
+      if(running) requestAnimationFrame(step);
+    }
+
+    // Автосалют (редже на мобильных)
+    function autoShow(){
+      const batch = isPhone() ? 1 : 3;
+      for(let i=0;i<batch;i++){
+        setTimeout(()=> spawnRocket(), i*220);
+      }
+    }
+
+    step();
+    setTimeout(autoShow, 600);
+    const autoTimer = setInterval(()=>{
+      if(!running) return;
+      if(Math.random() < (isPhone()? 0.55 : 0.8)) spawnRocket();
+    }, isPhone()? 1100 : 900);
+
+    // Управление
+    btnBurst.addEventListener('click', ()=>{
+      const n = isPhone()? 2 : 3;
+      for(let i=0;i<n;i++) spawnRocket();
+    }, { passive:true });
+
+    // Тап по экрану — взрыв в точке
+    addEventListener('click', (e)=>{
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX - rect.left) * DPR;
+      const y = (e.clientY - rect.top) * DPR;
+      explode(x, y, Math.floor(rand(180,360)));
+    }, { passive:true });
+
+    btnToggle.addEventListener('click', ()=>{
+      running = !running;
+      btnToggle.textContent = running ? 'Выключить фейерверки' : 'Включить фейерверки';
+      document.getElementById('hint').style.opacity = running ? '0.75' : '0.0';
+      if(running) requestAnimationFrame(step);
+    });
+
+    // Экономим батарею при сворачивании
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden){ running = false; btnToggle.textContent='Включить фейерверки'; }
+    });
+
+    // Убираем подсказку спустя пару секунд
+    setTimeout(()=> {
+      const hint = document.getElementById('hint');
+      hint && (hint.style.transition='opacity .5s ease', hint.style.opacity='0');
+    }, 4000);
+  </script>
+</body>
+</html>
