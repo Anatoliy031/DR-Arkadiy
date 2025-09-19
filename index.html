@@ -39,7 +39,6 @@
 
     html, body {
       height: 100%;
-      overflow: hidden;
     }
 
     body {
@@ -50,6 +49,8 @@
       min-height: 100vh;
       color: var(--text-primary);
       position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     @keyframes gradientShift {
@@ -208,16 +209,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 30px 20px 40px;
       perspective: 1500px;
     }
 
     /* 3D Card */
     .card {
-      width: min(900px, 95vw);
+      width: min(800px, 92vw);
       background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
       border-radius: 30px;
-      padding: 40px;
+      padding: 30px;
       backdrop-filter: blur(20px);
       box-shadow: 
         0 25px 60px rgba(0,0,0,0.4),
@@ -227,6 +228,7 @@
       transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
       position: relative;
       overflow: hidden;
+      margin: auto;
     }
 
     .card::before {
@@ -252,7 +254,7 @@
     /* Header */
     .header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       animation: slideDown 0.8s ease-out;
     }
 
@@ -271,17 +273,17 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 24px;
+      padding: 10px 20px;
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       border-radius: 50px;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--bg-dark);
       box-shadow: 0 5px 20px rgba(255,215,0,0.4);
       animation: pulse 2s ease-in-out infinite;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     @keyframes pulse {
@@ -293,9 +295,9 @@
     h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: clamp(32px, 7vw, 64px);
+      font-size: clamp(26px, 5.5vw, 48px);
       line-height: 1.1;
-      margin: 20px 0;
+      margin: 15px 0;
       background: linear-gradient(45deg, #FFD700, #FFA500, #FF6347, #FF1493, #00CED1, #FFD700);
       background-size: 200% 200%;
       -webkit-background-clip: text;
@@ -304,7 +306,7 @@
       animation: titleGradient 3s ease-in-out infinite;
       text-shadow: 0 10px 30px rgba(0,0,0,0.3);
       position: relative;
-      min-height: 2em;
+      min-height: 1.8em;
     }
 
     @keyframes titleGradient {
@@ -327,10 +329,10 @@
       font-size: clamp(16px, 3.5vw, 20px);
       color: var(--gold-light);
       font-weight: 600;
-      margin: 10px 0 30px;
+      margin: 10px 0 20px;
       opacity: 0;
       animation: fadeInUp 0.8s ease-out 0.3s forwards;
-      min-height: 1.5em;
+      min-height: 1.3em;
     }
 
     @keyframes fadeInUp {
@@ -347,20 +349,20 @@
     /* Message Cards */
     .messages {
       display: grid;
-      gap: 20px;
-      margin: 30px 0;
+      gap: 15px;
+      margin: 20px 0;
     }
 
     .message-card {
       background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
       border-radius: 20px;
-      padding: 20px;
+      padding: 15px;
       border: 1px solid rgba(255,255,255,0.2);
       position: relative;
       overflow: hidden;
       opacity: 0;
       animation: slideIn 0.6s ease-out forwards;
-      min-height: 60px;
+      min-height: 50px;
     }
 
     .message-card:nth-child(1) { animation-delay: 0.5s; }
@@ -426,14 +428,14 @@
 
     /* Footer */
     .footer {
-      margin-top: 40px;
-      padding-top: 20px;
+      margin-top: 25px;
+      padding-top: 15px;
       border-top: 2px solid rgba(255,215,0,0.3);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 10px;
       opacity: 0;
       animation: fadeIn 1s ease-out 1.5s forwards;
     }
@@ -487,29 +489,39 @@
 
     /* Mobile Optimizations */
     @media (max-width: 640px) {
+      .container {
+        padding: 20px 10px;
+        min-height: auto;
+      }
+      
       .card {
-        padding: 25px;
-        border-radius: 25px;
+        padding: 20px;
+        border-radius: 20px;
       }
       
       .badge {
-        font-size: 12px;
-        padding: 10px 20px;
+        font-size: 11px;
+        padding: 8px 16px;
       }
       
       h1 {
-        font-size: clamp(28px, 8vw, 48px);
+        font-size: clamp(24px, 7vw, 36px);
       }
       
       .message-card {
-        padding: 15px;
+        padding: 12px;
       }
       
       .celebrate-btn {
-        bottom: 20px;
-        right: 20px;
-        padding: 12px 24px;
-        font-size: 14px;
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+      
+      .footer {
+        margin-top: 25px;
+        padding-top: 15px;
       }
     }
   </style>
@@ -617,29 +629,47 @@
       card.style.transform = 'rotateX(0) rotateY(0)';
     });
 
-    // Typing Animation
+    // Typing Animation with Auto-scroll
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     
-    async function typeText(element, text, speed = 30) {
-      element.textContent = '';
-      for (let i = 0; i < text.length; i++) {
-        element.textContent += text[i];
-        await sleep(speed + Math.random() * 20);
+    function scrollToElement(element) {
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+      
+      // Only scroll if element is not fully visible
+      if (!isVisible) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetY = rect.top + scrollTop - 100; // 100px offset from top
+        window.scrollTo({
+          top: targetY,
+          behavior: 'smooth'
+        });
       }
     }
     
-    async function typeWithEmphasis(element, parts, speed = 30) {
+    async function typeText(element, text, speed = 20, shouldScroll = true) {
+      element.textContent = '';
+      if (shouldScroll) {
+        scrollToElement(element);
+      }
+      for (let i = 0; i < text.length; i++) {
+        element.textContent += text[i];
+        await sleep(speed + Math.random() * 15);
+      }
+    }
+    
+    async function typeWithEmphasis(element, parts, speed = 20) {
       element.innerHTML = '';
+      scrollToElement(element);
       for (let part of parts) {
+        const span = document.createElement('span');
         if (part.highlight) {
-          const span = document.createElement('span');
           span.className = 'highlight';
-          element.appendChild(span);
-          await typeText(span, part.text, speed);
-        } else {
-          const span = document.createElement('span');
-          element.appendChild(span);
-          await typeText(span, part.text, speed);
+        }
+        element.appendChild(span);
+        for (let i = 0; i < part.text.length; i++) {
+          span.textContent += part.text[i];
+          await sleep(speed + Math.random() * 15);
         }
       }
     }
@@ -652,38 +682,46 @@
       const msg2 = document.getElementById('msg2');
       const msg3 = document.getElementById('msg3');
       const msg4 = document.getElementById('msg4');
+      const card = document.getElementById('card');
+
+      // Scroll to top
+      await sleep(100);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Title
       await sleep(500);
-      await typeText(title, '🎉 С днём рождения, Аркадий Андреевич! 🎂', 35);
+      await typeText(title, '🎉 С днём рождения, Аркадий Андреевич! 🎂', 25, false);
       title.classList.remove('cursor');
       
       // Subtitle
       await sleep(200);
       subtitle.classList.add('cursor');
-      await typeText(subtitle, '✨ Лучший работник и надёжный начальник отдела ✨', 25);
+      await typeText(subtitle, '✨ Лучший работник и надёжный начальник отдела ✨', 20, false);
       subtitle.classList.remove('cursor');
       
-      // Messages
+      // Messages - with scroll to each
       await sleep(300);
+      scrollToElement(msg1.parentElement);
       await typeWithEmphasis(msg1, [
         {text: 'От всего коллектива ДРНУ — '},
         {text: 'самые тёплые поздравления!', highlight: true},
         {text: ' 🎊'}
-      ], 25);
+      ], 20);
       msg1.classList.remove('cursor');
       
-      await sleep(300);
+      await sleep(250);
+      scrollToElement(msg2.parentElement);
       await typeWithEmphasis(msg2, [
         {text: 'Ты настолько '},
         {text: 'ответственен и профессионален', highlight: true},
         {text: ', что мы иногда забываем просто '},
         {text: 'говорить спасибо!', highlight: true},
         {text: ' 💫'}
-      ], 25);
+      ], 20);
       msg2.classList.remove('cursor');
       
-      await sleep(300);
+      await sleep(250);
+      scrollToElement(msg3.parentElement);
       await typeWithEmphasis(msg3, [
         {text: 'Благодаря тебе задачи становятся '},
         {text: 'легче', highlight: true},
@@ -692,10 +730,11 @@
         {text: ', а результат — '},
         {text: 'впечатляющим!', highlight: true},
         {text: ' 🚀'}
-      ], 25);
+      ], 20);
       msg3.classList.remove('cursor');
       
-      await sleep(300);
+      await sleep(250);
+      scrollToElement(msg4.parentElement);
       await typeWithEmphasis(msg4, [
         {text: 'Желаем '},
         {text: 'крепкого здоровья', highlight: true},
@@ -706,7 +745,7 @@
         {text: ' и только '},
         {text: 'лучших новостей', highlight: true},
         {text: ' каждый день! 🌟'}
-      ], 25);
+      ], 20);
       msg4.classList.remove('cursor');
     })();
 
